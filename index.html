@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>خطوة</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="bar">
+<a class="logo" href="#home">خطوة</a>
+<nav>
+<a href="#home">الرئيسية</a><a href="#discover">اكتشف الفرص</a><a href="#events">الفعاليات</a><a href="#orgs">الجهات</a>
+<a href="#dash" id="navDash">لوحتي</a>
+</nav>
+<span id="authBtn"></span>
+</div></header>
+
+<section id="home" class="hero">
+<div>
+<span class="pill">منصة فرص للطلاب</span>
+<h1>كل فرصة تبدأ بـ <b>خطوة.</b></h1>
+<p>اكتشف التدريب والتطوع والهاكاثونات والدورات والمنح والفعاليات التي تناسب تخصصك ومستواك واهتماماتك.</p>
+<button class="btn" onclick="startNow()">أنشئ ملفك الآن</button>
+</div>
+<div class="art" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(45 60 60)"><path d="M60 10c14 12 20 30 20 50v24H40V60c0-20 6-38 20-50z"/><circle cx="60" cy="50" r="8"/><path d="M40 66l-12 14v12l12-8M80 66l12 14v12l-12-8"/><path d="M50 90c0 8 4 14 10 20 6-6 10-12 10-20" fill="#fff" fill-opacity=".35"/></g></svg></div>
+</section>
+
+<section id="discover">
+<h2>اكتشف الفرص</h2><p class="sub">اختر أكثر من فلتر، والنتائج تتغير معك مباشرة.</p>
+<div class="filters">
+<label for="q">بحث</label><input id="q" placeholder="اسم الفرصة أو الجهة" oninput="F.q=this.value;draw()">
+<div style="margin-top:12px"><span class="lb">نوع الفرصة</span><div class="pills" id="typePills"></div></div>
+<div class="fg">
+<div><label for="fm">التخصص</label><select id="fm" onchange="F.major=this.value;draw()"></select></div>
+<div><label for="fl">المستوى</label><select id="fl" onchange="F.level=this.value;draw()"></select></div>
+<div><label for="fc">المدينة</label><select id="fc" onchange="F.city=this.value;draw()"></select></div>
+</div></div>
+<div class="grid" id="list"></div>
+</section>
+
+<section id="events">
+<h2>الفعاليات</h2><p class="sub">هاكاثونات وورش ومسابقات قادمة.</p>
+<div class="grid" id="evList"></div>
+</section>
+
+<section id="orgs">
+<h2>الجهات والشركات</h2><p class="sub">جهات تقدم فرصًا للطلاب.</p>
+<div class="grid" id="orgList"></div>
+</section>
+
+<section id="dash" hidden>
+<div class="dh"><h2 id="dTitle" style="margin:0">لوحة الطالب</h2>
+<div class="row" style="margin:0"><button class="btn ghost sm" onclick="editProfile()">تعديل الملف</button><button class="btn ghost sm" onclick="logout()">تسجيل الخروج</button></div></div>
+<div class="stats"><div class="card"><b id="sSaved">0</b>فرص محفوظة</div><div class="card"><b id="sApplied">0</b>فرص مسجل بها</div><div class="card"><b id="sRec">0</b>فرص مقترحة</div></div>
+<h2>مقترحة لك</h2>
+<div class="grid" id="recList"></div>
+<h2 style="margin-top:28px">محفوظاتي</h2>
+<div class="grid" id="savedList"></div>
+<h2 style="margin-top:28px">سجل التسجيل</h2>
+<div class="grid" id="appList"></div>
+</section>
+
+<footer>خطوة — اكتشف فرصتك، وابنِ مستقبلك.</footer>
+<div id="toast" role="status"></div>
+<dialog id="dlg"><div id="dlgBody"></div></dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
